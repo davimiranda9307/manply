@@ -775,13 +775,13 @@ dialog.lb::backdrop{background:rgba(2,6,23,.8)}
       </div>
 
       <figure class="frame reveal" style="margin:0">
-        <button type="button" class="shot" data-zoom="assets/img/mapas/mapa-10-2000.webp" data-zoom-cap="Bloco 10 · Geometria Plana I" style="padding:0;border:0;background:none;cursor:zoom-in;display:block;width:100%">
-          <img src="assets/img/mapas/mapa-10-960.webp" width="960" height="668" loading="lazy" decoding="async"
+        <button type="button" class="shot" data-zoom="assets/img/mapas/bloco10-2000.webp" data-zoom-cap="Bloco 10 · Geometria Plana I" style="padding:0;border:0;background:none;cursor:zoom-in;display:block;width:100%">
+          <img src="assets/img/mapas/bloco10-960.webp" width="960" height="668" loading="lazy" decoding="async"
                alt="Página real do material: mapa mental do bloco Geometria Plana I, com ângulos, triângulos, Pitágoras, semelhança, quadriláteros, polígonos e círculo">
         </button>
         <figcaption class="frame-cap">
           <span>Mapa real · Bloco 10 — Geometria Plana I</span>
-          <button type="button" class="zoom-btn" data-zoom="assets/img/mapas/mapa-10-2000.webp" data-zoom-cap="Bloco 10 · Geometria Plana I"><svg class="ic"><use href="#i-zoom"/></svg>Ampliar</button>
+          <button type="button" class="zoom-btn" data-zoom="assets/img/mapas/bloco10-2000.webp" data-zoom-cap="Bloco 10 · Geometria Plana I"><svg class="ic"><use href="#i-zoom"/></svg>Ampliar</button>
         </figcaption>
       </figure>
     </div>
@@ -871,8 +871,8 @@ dialog.lb::backdrop{background:rgba(2,6,23,.8)}
 
     <div class="viewer reveal">
       <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1">
-        <button type="button" class="shot land" data-zoom="assets/img/mapas/mapa-03-2000.webp" data-zoom-cap="Bloco 03 · Matemática Financeira">
-          <img src="assets/img/mapas/mapa-03-960.webp" width="960" height="755" loading="lazy" decoding="async" alt="Mapa mental do bloco 03, Matemática Financeira: lucro e desconto, juros simples, juros compostos, montante e capital, compras parceladas e gráficos de inflação">
+        <button type="button" class="shot land" data-zoom="assets/img/mapas/bloco03-2000.webp" data-zoom-cap="Bloco 03 · Matemática Financeira">
+          <img src="assets/img/mapas/bloco03-960.webp" width="960" height="755" loading="lazy" decoding="async" alt="Mapa mental do bloco 03, Matemática Financeira: lucro e desconto, juros simples, juros compostos, montante e capital, compras parceladas e gráficos de inflação">
           <span class="zoom-hint"><svg class="ic"><use href="#i-zoom"/></svg>Ampliar</span>
         </button>
         <p><b>Bloco 03 · Matemática Financeira.</b> Os 6 tópicos do bloco num mapa só — cada um com fórmula, conceito e dica de prova.</p>
@@ -885,8 +885,8 @@ dialog.lb::backdrop{background:rgba(2,6,23,.8)}
         <p><b>Mapa 13/100 · Juros compostos.</b> É o tópico 13 do mapa anterior, agora em detalhe: fórmula, o que é, exemplo resolvido, erro comum e dica ENEM.</p>
       </div>
       <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
-        <button type="button" class="shot land" data-zoom="assets/img/mapas/mapa-10-2000.webp" data-zoom-cap="Bloco 10 · Geometria Plana I">
-          <img src="assets/img/mapas/mapa-10-960.webp" width="960" height="668" loading="lazy" decoding="async" alt="Mapa mental do bloco 10, Geometria Plana I, com 7 tópicos">
+        <button type="button" class="shot land" data-zoom="assets/img/mapas/bloco10-2000.webp" data-zoom-cap="Bloco 10 · Geometria Plana I">
+          <img src="assets/img/mapas/bloco10-960.webp" width="960" height="668" loading="lazy" decoding="async" alt="Mapa mental do bloco 10, Geometria Plana I, com 7 tópicos">
           <span class="zoom-hint"><svg class="ic"><use href="#i-zoom"/></svg>Ampliar</span>
         </button>
         <p><b>Bloco 10 · Geometria Plana I.</b> Ângulos, triângulos, Pitágoras, semelhança, quadriláteros, polígonos e círculo.</p>
@@ -1395,7 +1395,7 @@ dialog.lb::backdrop{background:rgba(2,6,23,.8)}
   /* ---------- MARQUEE DOS 20 MAPAS (carrega só quando chega perto) ---------- */
   var row = $("[data-marquee]");
   var thumbs = BLOCOS.map(function (b, i) {
-    return '<div class="mthumb c-' + b[0] + '"><div class="im"><img data-src="assets/img/mapas/mapa-' + two(i + 1) + '-thumb.webp" width="420" height="300" alt="" decoding="async"></div><span>' + two(i + 1) + ' · ' + esc(b[1].split(" — ")[0]) + '</span></div>';
+    return '<div class="mthumb c-' + b[0] + '"><div class="im"><img data-src="assets/img/mapas/bloco' + two(i + 1) + '.webp" width="420" height="300" alt="" decoding="async"></div><span>' + two(i + 1) + ' · ' + esc(b[1].split(" — ")[0]) + '</span></div>';
   }).join("");
   row.innerHTML = thumbs + thumbs.replace(/class="mthumb/g, 'aria-hidden="true" class="mthumb');
   var loadThumbs = function () { $$("img[data-src]", row).forEach(function (im) { im.src = im.getAttribute("data-src"); im.removeAttribute("data-src"); }); };
