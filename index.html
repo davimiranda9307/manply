@@ -8,13 +8,13 @@
 <meta name="theme-color" content="#0f172a">
 <meta name="author" content="Manply">
 
-<!-- ✏️ TROQUE "https://SEU-DOMINIO.com.br" pelo endereço real do site (o WhatsApp/Instagram só mostram a imagem com URL completa) -->
+<!-- ✏️ Endereço do site publicado (o WhatsApp/Instagram só mostram a imagem com URL completa). Se trocar de domínio, troque aqui. -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Manply">
 <meta property="og:title" content="100 Mapas Mentais de Matemática para o ENEM · Manply">
 <meta property="og:description" content="Os assuntos que mais caem no ENEM em 100 mapas mentais que você entende de relance. PDF com acesso imediato.">
-<meta property="og:image" content="https://SEU-DOMINIO.com.br/assets/img/og-image.jpg">
+<meta property="og:image" content="https://manply.vercel.app/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,7 +69,7 @@ window.CONFIG = {
 
   /* 💬 DEPOIMENTOS — SOMENTE de compradores reais, com autorização deles.
      Nunca invente nomes ou falas. Formato de cada item:
-     { nome: "Ana L.", contexto: "3º ano · Recife/PE", texto: "O mapa de porcentagem...", foto: "" , print: "assets/img/depo-1.webp" }
+     { nome: "Ana L.", contexto: "3º ano · Recife/PE", texto: "O mapa de porcentagem...", foto: "" , print: "depo-1.webp" }
      "print" é opcional: imagem do print do WhatsApp/Direct (com dados pessoais borrados). */
   depoimentos: [],
 
@@ -91,8 +91,8 @@ window.CONFIG = {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
-<link rel="preload" as="image" href="assets/img/produto-recorte-640.webp" media="(max-width: 959px)" fetchpriority="high">
-<link rel="preload" as="image" href="assets/img/produto-600.webp" imagesrcset="assets/img/produto-600.webp 600w, assets/img/produto-1024.webp 1024w" imagesizes="440px" media="(min-width: 960px)" fetchpriority="high">
+<link rel="preload" as="image" href="produto-recorte-640.webp" media="(max-width: 959px)" fetchpriority="high">
+<link rel="preload" as="image" href="produto-600.webp" imagesrcset="produto-600.webp 600w, produto-1024.webp 1024w" imagesizes="440px" media="(min-width: 960px)" fetchpriority="high">
 
 <style>
 /* ==========================================================================
@@ -203,7 +203,7 @@ svg.ic{width:1.25em;height:1.25em;flex:none;stroke:currentColor;fill:none;stroke
 .trust .ic{color:#34d399;width:1.1em;height:1.1em}
 @media (max-width:959px){.hero-action{text-align:left}}
 
-/* capa do produto (imagem em assets/img/produto-*.webp) */
+/* capa do produto (imagem em produto-*.webp) */
 .product{position:relative;margin:0 auto;width:100%;max-width:520px}
 .product::before{content:"";position:absolute;inset:8% 4% 0;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(249,115,22,.55),rgba(249,115,22,0));filter:blur(28px)}
 .product img{width:100%;border-radius:18px;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 40px 80px -30px rgba(0,0,0,.85)}
@@ -556,14 +556,14 @@ dialog.lb::backdrop{background:rgba(2,6,23,.8)}
 <body>
 <script>document.documentElement.classList.add('js')</script>
 <script>
-/* Aviso só para pré-visualizações sem acesso à pasta assets/ (ex.: snapshot "data:" de editores).
+/* Aviso só para pré-visualizações sem acesso aos arquivos de imagem (ex.: snapshot "data:" de editores).
    Em site publicado (https) ou aberto pelo navegador (file/http) isso nunca aparece. */
 if (/^(data|about|blob):$/.test(location.protocol)) {
   document.addEventListener('DOMContentLoaded', function () {
     var d = document.createElement('div');
     d.setAttribute('role', 'alert');
     d.style.cssText = 'position:sticky;top:0;z-index:100;padding:12px 16px;background:#fef3c7;color:#451a03;font:600 14px/1.45 system-ui,sans-serif;text-align:center;border-bottom:2px solid #f59e0b';
-    d.innerHTML = '⚠️ Esta pré-visualização não tem acesso à pasta <b>assets/</b>, por isso as imagens não aparecem. Abra o <b>index.html</b> direto no navegador (duplo clique no arquivo) ou pela pré-visualização <b>manply-site</b> (localhost:5178).';
+    d.innerHTML = '⚠️ Esta pré-visualização não tem acesso aos arquivos de imagem que ficam ao lado do <b>index.html</b>, por isso as imagens não aparecem. Abra o <b>index.html</b> direto no navegador (duplo clique no arquivo) ou pela pré-visualização <b>manply-site</b> (localhost:5178).';
     document.body.prepend(d);
   });
 }
@@ -631,11 +631,11 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
 
     <div class="hero-visual">
       <figure class="product">
-        <!-- 🖼️ CAPA DO PRODUTO: troque os arquivos assets/img/produto-*.webp mantendo os nomes.
+        <!-- 🖼️ CAPA DO PRODUTO: troque os arquivos produto-*.webp mantendo os nomes.
              produto-recorte-* = versão cortada para celular · produto-600/1024 = imagem inteira para desktop -->
         <picture>
-          <source media="(max-width: 959px)" srcset="assets/img/produto-recorte-640.webp 640w, assets/img/produto-recorte-984.webp 984w" sizes="100vw" width="984" height="900">
-          <img src="assets/img/produto-600.webp" srcset="assets/img/produto-600.webp 600w, assets/img/produto-1024.webp 1024w" sizes="440px" width="1024" height="1536" fetchpriority="high"
+          <source media="(max-width: 959px)" srcset="produto-recorte-640.webp 640w, produto-recorte-984.webp 984w" sizes="100vw" width="984" height="900">
+          <img src="produto-600.webp" srcset="produto-600.webp 600w, produto-1024.webp 1024w" sizes="440px" width="1024" height="1536" fetchpriority="high"
                alt="Capa do e-book 100 Mapas Mentais de Matemática para o ENEM, da Manply">
         </picture>
         <figcaption class="product-tag"><svg class="ic"><use href="#i-file"/></svg>Produto digital · PDF de 124 páginas</figcaption>
@@ -788,13 +788,13 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
       </div>
 
       <figure class="frame reveal" style="margin:0">
-        <button type="button" class="shot" data-zoom="assets/img/mapas/bloco10-2000.webp" data-zoom-cap="Bloco 10 · Geometria Plana I" style="padding:0;border:0;background:none;cursor:zoom-in;display:block;width:100%">
-          <img src="assets/img/mapas/bloco10-960.webp" width="960" height="668" loading="lazy" decoding="async"
+        <button type="button" class="shot" data-zoom="bloco10-2000.webp" data-zoom-cap="Bloco 10 · Geometria Plana I" style="padding:0;border:0;background:none;cursor:zoom-in;display:block;width:100%">
+          <img src="bloco10-960.webp" width="960" height="668" loading="lazy" decoding="async"
                alt="Página real do material: mapa mental do bloco Geometria Plana I, com ângulos, triângulos, Pitágoras, semelhança, quadriláteros, polígonos e círculo">
         </button>
         <figcaption class="frame-cap">
           <span>Mapa real · Bloco 10 — Geometria Plana I</span>
-          <button type="button" class="zoom-btn" data-zoom="assets/img/mapas/bloco10-2000.webp" data-zoom-cap="Bloco 10 · Geometria Plana I"><svg class="ic"><use href="#i-zoom"/></svg>Ampliar</button>
+          <button type="button" class="zoom-btn" data-zoom="bloco10-2000.webp" data-zoom-cap="Bloco 10 · Geometria Plana I"><svg class="ic"><use href="#i-zoom"/></svg>Ampliar</button>
         </figcaption>
       </figure>
     </div>
@@ -873,7 +873,7 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
       <p class="sub">Prints reais do PDF, sem retoque. Toque na imagem pra ampliar.</p>
     </div>
 
-    <!-- 🖼️ PRINTS DO PRODUTO: arquivos em assets/img/ (gerados do PDF original) -->
+    <!-- 🖼️ PRINTS DO PRODUTO: arquivos pagina-*.webp e bloco*.webp, ao lado do index.html (gerados do PDF original) -->
     <div class="tabs" role="tablist" aria-label="Páginas do material">
       <button class="tab c-amber" role="tab" id="t1" aria-controls="p1" aria-selected="true"><i></i>Mapa do bloco</button>
       <button class="tab c-pink" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1"><i></i>Mapa do assunto</button>
@@ -884,36 +884,36 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
 
     <div class="viewer reveal">
       <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1">
-        <button type="button" class="shot land" data-zoom="assets/img/mapas/bloco03-2000.webp" data-zoom-cap="Bloco 03 · Matemática Financeira">
-          <img src="assets/img/mapas/bloco03-960.webp" width="960" height="755" loading="lazy" decoding="async" alt="Mapa mental do bloco 03, Matemática Financeira: lucro e desconto, juros simples, juros compostos, montante e capital, compras parceladas e gráficos de inflação">
+        <button type="button" class="shot land" data-zoom="bloco03-2000.webp" data-zoom-cap="Bloco 03 · Matemática Financeira">
+          <img src="bloco03-960.webp" width="960" height="755" loading="lazy" decoding="async" alt="Mapa mental do bloco 03, Matemática Financeira: lucro e desconto, juros simples, juros compostos, montante e capital, compras parceladas e gráficos de inflação">
           <span class="zoom-hint"><svg class="ic"><use href="#i-zoom"/></svg>Ampliar</span>
         </button>
         <p><b>Bloco 03 · Matemática Financeira.</b> Os 6 tópicos do bloco num mapa só — cada um com fórmula, conceito e dica de prova.</p>
       </div>
       <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
-        <button type="button" class="shot port" data-zoom="assets/img/pagina-juros-compostos-1400.webp" data-zoom-cap="Mapa 13/100 · Juros compostos">
-          <img src="assets/img/pagina-juros-compostos-760.webp" width="760" height="1075" loading="lazy" decoding="async" alt="Página de explicação do tópico 13, Juros compostos: fórmula, o que é, exemplo resolvido, erro comum e dica ENEM">
+        <button type="button" class="shot port" data-zoom="pagina-juros-compostos-1400.webp" data-zoom-cap="Mapa 13/100 · Juros compostos">
+          <img src="pagina-juros-compostos-760.webp" width="760" height="1075" loading="lazy" decoding="async" alt="Página de explicação do tópico 13, Juros compostos: fórmula, o que é, exemplo resolvido, erro comum e dica ENEM">
           <span class="zoom-hint"><svg class="ic"><use href="#i-zoom"/></svg>Ampliar</span>
         </button>
         <p><b>Mapa 13/100 · Juros compostos.</b> É o tópico 13 do mapa anterior, agora em detalhe: fórmula, o que é, exemplo resolvido, erro comum e dica ENEM.</p>
       </div>
       <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
-        <button type="button" class="shot land" data-zoom="assets/img/mapas/bloco10-2000.webp" data-zoom-cap="Bloco 10 · Geometria Plana I">
-          <img src="assets/img/mapas/bloco10-960.webp" width="960" height="668" loading="lazy" decoding="async" alt="Mapa mental do bloco 10, Geometria Plana I, com 7 tópicos">
+        <button type="button" class="shot land" data-zoom="bloco10-2000.webp" data-zoom-cap="Bloco 10 · Geometria Plana I">
+          <img src="bloco10-960.webp" width="960" height="668" loading="lazy" decoding="async" alt="Mapa mental do bloco 10, Geometria Plana I, com 7 tópicos">
           <span class="zoom-hint"><svg class="ic"><use href="#i-zoom"/></svg>Ampliar</span>
         </button>
         <p><b>Bloco 10 · Geometria Plana I.</b> Ângulos, triângulos, Pitágoras, semelhança, quadriláteros, polígonos e círculo.</p>
       </div>
       <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
-        <button type="button" class="shot port" data-zoom="assets/img/pagina-indice-1400.webp" data-zoom-cap="Índice dos 20 blocos">
-          <img src="assets/img/pagina-indice-760.webp" width="760" height="1075" loading="lazy" decoding="async" alt="Página de índice com os 20 blocos do material">
+        <button type="button" class="shot port" data-zoom="pagina-indice-1400.webp" data-zoom-cap="Índice dos 20 blocos">
+          <img src="pagina-indice-760.webp" width="760" height="1075" loading="lazy" decoding="async" alt="Página de índice com os 20 blocos do material">
           <span class="zoom-hint"><svg class="ic"><use href="#i-zoom"/></svg>Ampliar</span>
         </button>
         <p><b>Índice dos 20 blocos.</b> Da aritmética à revisão final, com a faixa de tópicos de cada bloco.</p>
       </div>
       <div class="panel" role="tabpanel" id="p5" aria-labelledby="t5" hidden>
-        <button type="button" class="shot port" data-zoom="assets/img/pagina-resumo-formulas-1400.webp" data-zoom-cap="Mapa 100/100 · Resumo de fórmulas">
-          <img src="assets/img/pagina-resumo-formulas-760.webp" width="760" height="1075" loading="lazy" decoding="async" alt="Página 100: resumo geral com as fórmulas essenciais para o ENEM">
+        <button type="button" class="shot port" data-zoom="pagina-resumo-formulas-1400.webp" data-zoom-cap="Mapa 100/100 · Resumo de fórmulas">
+          <img src="pagina-resumo-formulas-760.webp" width="760" height="1075" loading="lazy" decoding="async" alt="Página 100: resumo geral com as fórmulas essenciais para o ENEM">
           <span class="zoom-hint"><svg class="ic"><use href="#i-zoom"/></svg>Ampliar</span>
         </button>
         <p><b>Mapa 100/100 · Resumo geral.</b> Bhaskara, Pitágoras, juros compostos, área do círculo, PA, PG e distância entre pontos — pra revisão relâmpago na última semana.</p>
@@ -989,7 +989,7 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
       <div class="offer-ribbon" data-somente-lancamento><svg class="ic"><use href="#i-tag"/></svg>Condição de lançamento</div>
 
       <div class="offer-left">
-        <img class="offer-img" src="assets/img/produto-recorte-640.webp" srcset="assets/img/produto-recorte-640.webp 640w, assets/img/produto-recorte-984.webp 984w" sizes="(min-width: 900px) 500px, 90vw" width="984" height="900" loading="lazy" alt="Capa do e-book 100 Mapas Mentais de Matemática para o ENEM">
+        <img class="offer-img" src="produto-recorte-640.webp" srcset="produto-recorte-640.webp 640w, produto-recorte-984.webp 984w" sizes="(min-width: 900px) 500px, 90vw" width="984" height="900" loading="lazy" alt="Capa do e-book 100 Mapas Mentais de Matemática para o ENEM">
         <h3>100 Mapas Mentais de Matemática para o ENEM</h3>
         <ul class="checks">
           <li><svg class="ic"><use href="#i-check"/></svg><span><b>100 mapas mentais</b>, um pra cada assunto que mais cai</span></li>
@@ -1405,10 +1405,10 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
     toggleAll.textContent = open ? "Fechar todos" : "Abrir todos";
   });
 
-  /* ---------- MARQUEE DOS 20 MAPAS (imagens em assets/img/mapas/blocoNN.webp) ---------- */
+  /* ---------- MARQUEE DOS 20 MAPAS (imagens bloco01.webp … bloco20.webp) ---------- */
   var row = $("[data-marquee]");
   var thumbs = BLOCOS.map(function (b, i) {
-    return '<div class="mthumb c-' + b[0] + '"><div class="im"><img src="assets/img/mapas/bloco' + two(i + 1) + '.webp" width="420" height="300" alt="Mapa do bloco ' + two(i + 1) + '" loading="lazy" decoding="async"></div><span>' + two(i + 1) + ' · ' + esc(b[1].split(" — ")[0]) + '</span></div>';
+    return '<div class="mthumb c-' + b[0] + '"><div class="im"><img src="bloco' + two(i + 1) + '.webp" width="420" height="300" alt="Mapa do bloco ' + two(i + 1) + '" loading="lazy" decoding="async"></div><span>' + two(i + 1) + ' · ' + esc(b[1].split(" — ")[0]) + '</span></div>';
   }).join("");
   row.innerHTML = thumbs + thumbs.replace(/class="mthumb/g, 'aria-hidden="true" class="mthumb');
 
