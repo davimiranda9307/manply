@@ -555,6 +555,19 @@ dialog.lb::backdrop{background:rgba(2,6,23,.8)}
 </head>
 <body>
 <script>document.documentElement.classList.add('js')</script>
+<script>
+/* Aviso só para pré-visualizações sem acesso à pasta assets/ (ex.: snapshot "data:" de editores).
+   Em site publicado (https) ou aberto pelo navegador (file/http) isso nunca aparece. */
+if (/^(data|about|blob):$/.test(location.protocol)) {
+  document.addEventListener('DOMContentLoaded', function () {
+    var d = document.createElement('div');
+    d.setAttribute('role', 'alert');
+    d.style.cssText = 'position:sticky;top:0;z-index:100;padding:12px 16px;background:#fef3c7;color:#451a03;font:600 14px/1.45 system-ui,sans-serif;text-align:center;border-bottom:2px solid #f59e0b';
+    d.innerHTML = '⚠️ Esta pré-visualização não tem acesso à pasta <b>assets/</b>, por isso as imagens não aparecem. Abra o <b>index.html</b> direto no navegador (duplo clique no arquivo) ou pela pré-visualização <b>manply-site</b> (localhost:5178).';
+    document.body.prepend(d);
+  });
+}
+</script>
 
 <!-- Ícones (SVG sprite) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1392,17 +1405,12 @@ dialog.lb::backdrop{background:rgba(2,6,23,.8)}
     toggleAll.textContent = open ? "Fechar todos" : "Abrir todos";
   });
 
-  /* ---------- MARQUEE DOS 20 MAPAS (carrega só quando chega perto) ---------- */
+  /* ---------- MARQUEE DOS 20 MAPAS (imagens em assets/img/mapas/blocoNN.webp) ---------- */
   var row = $("[data-marquee]");
   var thumbs = BLOCOS.map(function (b, i) {
-    return '<div class="mthumb c-' + b[0] + '"><div class="im"><img data-src="assets/img/mapas/bloco' + two(i + 1) + '.webp" width="420" height="300" alt="" decoding="async"></div><span>' + two(i + 1) + ' · ' + esc(b[1].split(" — ")[0]) + '</span></div>';
+    return '<div class="mthumb c-' + b[0] + '"><div class="im"><img src="assets/img/mapas/bloco' + two(i + 1) + '.webp" width="420" height="300" alt="Mapa do bloco ' + two(i + 1) + '" loading="lazy" decoding="async"></div><span>' + two(i + 1) + ' · ' + esc(b[1].split(" — ")[0]) + '</span></div>';
   }).join("");
   row.innerHTML = thumbs + thumbs.replace(/class="mthumb/g, 'aria-hidden="true" class="mthumb');
-  var loadThumbs = function () { $$("img[data-src]", row).forEach(function (im) { im.src = im.getAttribute("data-src"); im.removeAttribute("data-src"); }); };
-  if ("IntersectionObserver" in window) {
-    var mo = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { loadThumbs(); mo.disconnect(); } }, { rootMargin: "600px" });
-    mo.observe(row);
-  } else loadThumbs();
 
   /* ---------- QUIZ ---------- */
   var fb = $("[data-quiz-fb]");
@@ -1469,13 +1477,18 @@ dialog.lb::backdrop{background:rgba(2,6,23,.8)}
   }
 
   /* ---------- ANIMAÇÃO DE ENTRADA ---------- */
+  var revealAll = function () { $$(".reveal").forEach(function (el) { el.classList.add("in"); }); };
   if ("IntersectionObserver" in window) {
+    var roAtivo = false;
     var ro = new IntersectionObserver(function (entries) {
+      roAtivo = true;
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); ro.unobserve(en.target); } });
     }, { rootMargin: "0px 0px -40px 0px" });
     $$(".reveal").forEach(function (el) { ro.observe(el); });
+    // trava de segurança: se o navegador/visualizador não disparar o observer, mostra tudo (conteúdo nunca fica invisível)
+    setTimeout(function () { if (!roAtivo) { ro.disconnect(); revealAll(); } }, 1500);
   } else {
-    $$(".reveal").forEach(function (el) { el.classList.add("in"); });
+    revealAll();
   }
 })();
 </script>
