@@ -26,17 +26,17 @@
    ⚙️  CONFIG — TUDO QUE VOCÊ PRECISA TROCAR ANTES DE PUBLICAR ESTÁ AQUI
    --------------------------------------------------------------------------
    A página inteira lê desses valores: preço, link do checkout, datas,
-   depoimentos, bônus e suporte. Troque aqui, e só aqui.
+   suporte e dados legais. Troque aqui, e só aqui.
    ========================================================================== */
 window.CONFIG = {
 
   /* 🔗 LINK DO CHECKOUT (Hotmart, Kiwify, Eduzz...)
      Cole o link completo, ex: "https://pay.kiwify.com.br/AbC123".
      Os parâmetros UTM do anúncio são repassados pro checkout automaticamente. */
-  checkoutUrl: "#checkout",
+  checkoutUrl: "https://pay.kiwify.com.br/z6AViDj",
 
   /* Nome da plataforma de pagamento (aparece como selo de segurança). Ex: "Hotmart", "Kiwify". Vazio = texto genérico. */
-  plataforma: "",
+  plataforma: "Kiwify",
 
   /* 💰 PREÇOS — use ponto como separador decimal (27.89, não 27,89).
      O "precoCheio" precisa ser o valor que você REALMENTE vai cobrar depois do lançamento. */
@@ -67,20 +67,8 @@ window.CONFIG = {
   linkTermos: "#",
   linkPrivacidade: "#",
 
-  /* 💬 DEPOIMENTOS — SOMENTE de compradores reais, com autorização deles.
-     Nunca invente nomes ou falas. Formato de cada item:
-     { nome: "Ana L.", contexto: "3º ano · Recife/PE", texto: "O mapa de porcentagem...", foto: "" , print: "depo-1.webp" }
-     "print" é opcional: imagem do print do WhatsApp/Direct (com dados pessoais borrados). */
-  depoimentos: [],
-
-  /* 🎁 BÔNUS — adicione quando existirem de verdade. Formato:
-     { titulo: "Guia de Técnicas de Memorização", descricao: "…", imagem: "" } */
-  bonus: [],
-
-  /* 🚧 PLACEHOLDERS — enquanto true, os espaços vazios (depoimentos, bônus, dados legais)
-     aparecem como caixas tracejadas marcadas "ESPAÇO RESERVADO", pra você lembrar de preencher.
-     👉 Mude para false ANTES de rodar anúncio. Com false, o que estiver vazio some da página
-        (depoimentos vazios mostram um aviso honesto de "material recém-lançado"). */
+  /* 🚧 PLACEHOLDER — enquanto true e os dados legais acima estiverem vazios, o rodapé mostra
+     uma caixa "ESPAÇO RESERVADO" pra você lembrar de preencher. Com false, ela some. */
   mostrarPlaceholders: true,
 
   /* 📈 Meta Pixel (Facebook/Instagram Ads). Cole só o ID numérico. Dispara PageView e InitiateCheckout no clique do botão. */
@@ -367,19 +355,6 @@ svg.ic{width:1.25em;height:1.25em;flex:none;stroke:currentColor;fill:none;stroke
 .why-item p{font-size:.97rem}
 .page-anatomy{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .page-anatomy span{font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:7px;background:var(--t);color:var(--cd)}
-.testi-wrap{margin-top:64px}
-.testi-wrap > h3{font-size:clamp(1.4rem,4.5vw,1.9rem);font-weight:800;margin-bottom:22px}
-.testis{display:grid;gap:16px}
-@media (min-width:820px){.testis{grid-template-columns:repeat(3,1fr)}}
-.testi{display:flex;flex-direction:column;gap:14px;margin:0;padding:22px;border-radius:var(--r);background:var(--paper);border:1px solid var(--line)}
-.testi blockquote{margin:0;font-size:1rem;color:var(--ink-2)}
-.testi figcaption{display:flex;align-items:center;gap:12px;font-size:.9rem}
-.testi figcaption img{width:42px;height:42px;border-radius:50%;object-fit:cover}
-.testi figcaption b{display:block;color:var(--ink)}
-.testi figcaption span{color:var(--muted);font-size:.84rem}
-.testi .print{border-radius:10px;border:1px solid var(--line)}
-.honest-note{display:flex;gap:14px;align-items:flex-start;padding:22px 24px;border-radius:var(--r);background:var(--paper);border:1px dashed #cbd5e1;color:var(--text)}
-.honest-note .ic{color:#6366f1;width:1.5em;height:1.5em;margin-top:2px}
 
 /* placeholders — só aparecem com CONFIG.mostrarPlaceholders = true */
 .ph{position:relative;border:2px dashed #94a3b8 !important;background:repeating-linear-gradient(135deg,#fff 0 12px,#f8fafc 12px 24px) !important;color:#475569 !important}
@@ -388,7 +363,7 @@ svg.ic{width:1.25em;height:1.25em;flex:none;stroke:currentColor;fill:none;stroke
 .ph small{color:#b45309 !important}
 
 /* ==========================================================================
-   8. OFERTA  ·  9. BÔNUS  ·  10. GARANTIA
+   8. OFERTA  ·  10. GARANTIA
    ========================================================================== */
 .offer-sec{background:radial-gradient(70% 50% at 50% 0%,rgba(139,92,246,.12),transparent 70%),var(--bg)}
 .offer{position:relative;display:grid;border-radius:30px;background:var(--paper);border:2px solid var(--ink);box-shadow:0 40px 80px -40px rgba(49,46,129,.45);overflow:hidden}
@@ -423,18 +398,6 @@ svg.ic{width:1.25em;height:1.25em;flex:none;stroke:currentColor;fill:none;stroke
 .mini-guar b{color:var(--ink)}
 .deadline{margin-top:12px;font-size:.86rem;font-weight:700;color:#b45309}
 
-.bonus-sec{padding-block:0 76px}
-@media (min-width:900px){.bonus-sec{padding-block:0 112px}}
-.bonus-head{display:flex;align-items:center;gap:12px;margin:64px 0 22px}
-.bonus-head .ico{display:grid;place-items:center;width:46px;height:46px;border-radius:13px;background:#fdf2f8;color:#be185d}
-.bonus-head h2{font-size:clamp(1.5rem,5vw,2rem);font-weight:800}
-.bonuses{display:grid;gap:16px}
-@media (min-width:760px){.bonuses{grid-template-columns:repeat(2,1fr)}}
-.bonus{display:flex;gap:16px;align-items:flex-start;padding:22px;border-radius:var(--r);background:var(--paper);border:2px solid #f9a8d4}
-.bonus img{width:84px;border-radius:8px;flex:none}
-.bonus small{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#be185d}
-.bonus h3{font-size:1.08rem;font-weight:800;margin:3px 0 4px}
-.bonus p{font-size:.95rem}
 
 .guar{display:grid;gap:28px;align-items:center;padding:32px 24px;border-radius:30px;background:linear-gradient(160deg,#ecfdf5,#f0fdfa);border:2px solid #a7f3d0}
 @media (min-width:820px){.guar{grid-template-columns:auto 1fr;gap:48px;padding:48px 56px}}
@@ -593,7 +556,6 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></symbol>
   <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></symbol>
   <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
-  <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></symbol>
   <symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1.5"/></symbol>
   <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
   <symbol id="i-print" viewBox="0 0 24 24"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></symbol>
@@ -644,7 +606,7 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
 
     <div class="hero-action">
       <p class="lead">Em cada assunto: <b>fórmula, exemplo resolvido, o erro que mais derruba candidatos</b> e como ele cai na prova. No seu e-mail em minutos.</p>
-      <a class="btn" href="#checkout" data-cta="hero">Quero meus mapas mentais <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <a class="btn" href="https://pay.kiwify.com.br/z6AViDj" data-cta="hero">Quero meus mapas mentais <svg class="ic"><use href="#i-arrow"/></svg></a>
       <p class="price-line">
         <span data-somente-lancamento><s data-preco-cheio>R$ 54,99</s></span>
         <strong data-preco-atual>R$ 27,89</strong>
@@ -856,7 +818,7 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
     </div>
 
     <div class="cta-block reveal">
-      <a class="btn" href="#checkout" data-cta="incluso">Quero meus mapas mentais <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <a class="btn" href="https://pay.kiwify.com.br/z6AViDj" data-cta="incluso">Quero meus mapas mentais <svg class="ic"><use href="#i-arrow"/></svg></a>
       <p class="cta-note"><span><svg class="ic"><use href="#i-shield"/></svg>Garantia de 7 dias</span><span><svg class="ic"><use href="#i-zap"/></svg>Acesso imediato</span><span data-preco-atual>R$ 27,89</span></p>
     </div>
   </div>
@@ -926,7 +888,7 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
     </div>
 
     <div class="cta-block reveal">
-      <a class="btn" href="#checkout" data-cta="demo">Quero meus mapas mentais <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <a class="btn" href="https://pay.kiwify.com.br/z6AViDj" data-cta="demo">Quero meus mapas mentais <svg class="ic"><use href="#i-arrow"/></svg></a>
       <p class="cta-note"><span><svg class="ic"><use href="#i-shield"/></svg>Garantia de 7 dias</span><span><svg class="ic"><use href="#i-zap"/></svg>Acesso imediato</span></p>
     </div>
   </div>
@@ -965,12 +927,6 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
         <h3>Honesto sobre o que é</h3>
         <p>É material de revisão, feito pra usar junto com seus simulados. Ele organiza e acelera sua revisão. Não faz a prova por você.</p>
       </div>
-    </div>
-
-    <!-- 💬 DEPOIMENTOS — preenchidos por CONFIG.depoimentos (somente reais) -->
-    <div class="testi-wrap reveal">
-      <h3>O que dizem os primeiros alunos</h3>
-      <div data-depoimentos></div>
     </div>
   </div>
 </section>
@@ -1012,7 +968,7 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
         <span class="per-topic"><svg class="ic"><use href="#i-layers"/></svg><span>≈ <span data-preco-assunto>R$ 0,28</span> por mapa</span></span>
         <p class="deadline" data-prazo-texto hidden></p>
 
-        <a class="btn" href="#checkout" data-cta="oferta">Quero meus mapas mentais <svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a class="btn" href="https://pay.kiwify.com.br/z6AViDj" data-cta="oferta">Quero meus mapas mentais <svg class="ic"><use href="#i-arrow"/></svg></a>
 
         <div class="secure">
           <span><svg class="ic"><use href="#i-lock"/></svg><span data-plataforma-texto>Pagamento 100% seguro</span></span>
@@ -1024,19 +980,6 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ======================================================================
-     9. BÔNUS — preenchidos por CONFIG.bonus
-     ====================================================================== -->
-<section class="bonus-sec offer-sec" id="bonus" data-bonus-sec hidden>
-  <div class="container">
-    <div class="bonus-head reveal">
-      <span class="ico"><svg class="ic"><use href="#i-gift"/></svg></span>
-      <h2>Bônus pra quem garantir agora</h2>
-    </div>
-    <div class="bonuses" data-bonus></div>
   </div>
 </section>
 
@@ -1101,7 +1044,7 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
     </div>
 
     <div class="cta-block reveal">
-      <a class="btn" href="#checkout" data-cta="urgencia">Quero meus mapas mentais <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <a class="btn" href="https://pay.kiwify.com.br/z6AViDj" data-cta="urgencia">Quero meus mapas mentais <svg class="ic"><use href="#i-arrow"/></svg></a>
       <p class="cta-note"><span><svg class="ic"><use href="#i-shield"/></svg>Garantia de 7 dias</span><span><svg class="ic"><use href="#i-zap"/></svg>Acesso imediato</span><span data-preco-atual>R$ 27,89</span></p>
     </div>
   </div>
@@ -1170,7 +1113,7 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
     <h2 class="reveal"><span data-if-prova-futura>Faltam <span class="days" data-dias-prova-texto>62 dias</span> pra prova de Matemática. </span>Comece a revisar hoje, com o mapa certo.</h2>
     <p class="sub reveal">100 mapas mentais com os assuntos que mais caem, cada um com fórmula, exemplo, erro comum e dica de prova. No seu celular em minutos.</p>
     <div class="cta-block reveal" style="margin-top:34px">
-      <a class="btn" href="#checkout" data-cta="final">Quero meus mapas mentais <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <a class="btn" href="https://pay.kiwify.com.br/z6AViDj" data-cta="final">Quero meus mapas mentais <svg class="ic"><use href="#i-arrow"/></svg></a>
       <p class="price-line">
         <span data-somente-lancamento><s data-preco-cheio>R$ 54,99</s></span>
         <strong data-preco-atual>R$ 27,89</strong>
@@ -1221,7 +1164,7 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
     <b data-preco-atual>R$ 27,89</b>
     <small><svg class="ic"><use href="#i-shield"/></svg>Garantia 7 dias</small>
   </div>
-  <a class="btn" href="#checkout" data-cta="sticky" tabindex="-1">Quero meus mapas mentais</a>
+  <a class="btn" href="https://pay.kiwify.com.br/z6AViDj" data-cta="sticky" tabindex="-1">Quero meus mapas mentais</a>
 </div>
 
 <div class="toast" data-toast role="status"></div>
@@ -1333,39 +1276,6 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
   if (legal) {
     if (C.empresaNome || C.empresaDocumento) legal.insertAdjacentText("beforeend", " " + [C.empresaNome, C.empresaDocumento].filter(Boolean).join(" · "));
     else if (C.mostrarPlaceholders) legal.insertAdjacentHTML("afterend", '<p class="foot-legal ph">[Nome ou razão social] · [CPF/CNPJ] — preencha em CONFIG.empresaNome e CONFIG.empresaDocumento</p>');
-  }
-
-  /* ---------- DEPOIMENTOS (somente reais) ---------- */
-  var dep = $("[data-depoimentos]"), D = C.depoimentos || [];
-  if (D.length) {
-    dep.className = "testis";
-    dep.innerHTML = D.map(function (d) {
-      return '<figure class="testi">' + (d.print ? '<img class="print" src="' + esc(d.print) + '" alt="Print do depoimento de ' + esc(d.nome) + '" loading="lazy">' : "") +
-        (d.texto ? '<blockquote>“' + esc(d.texto) + '”</blockquote>' : "") +
-        '<figcaption>' + (d.foto ? '<img src="' + esc(d.foto) + '" alt="" loading="lazy">' : "") + '<div><b>' + esc(d.nome) + '</b><span>' + esc(d.contexto) + '</span></div></figcaption></figure>';
-    }).join("");
-  } else if (C.mostrarPlaceholders) {
-    dep.className = "testis";
-    dep.innerHTML = [1, 2, 3].map(function (n) {
-      return '<figure class="testi ph"><blockquote>[Depoimento real nº ' + n + ' — cole aqui a fala de um comprador, com autorização dele. Nunca invente.]</blockquote>' +
-        '<figcaption><div><b>[Nome e inicial do sobrenome]</b><span>[Ano escolar · cidade/UF]</span></div></figcaption></figure>';
-    }).join("");
-  } else {
-    dep.innerHTML = '<div class="honest-note"><svg class="ic"><use href="#i-info"/></svg><p><b>O material acabou de ser lançado.</b> Por isso ainda não tem depoimentos aqui — preferimos esperar os comentários reais de quem comprou a inventar qualquer um. Enquanto isso, veja as páginas por dentro na seção acima e conte com a garantia de 7 dias.</p></div>';
-  }
-
-  /* ---------- BÔNUS ---------- */
-  var bonusSec = $("[data-bonus-sec]"), bonusBox = $("[data-bonus]"), B = C.bonus || [];
-  if (B.length) {
-    bonusSec.hidden = false;
-    bonusBox.innerHTML = B.map(function (b, i) {
-      return '<div class="bonus reveal">' + (b.imagem ? '<img src="' + esc(b.imagem) + '" alt="" loading="lazy">' : "") + '<div><small>Bônus ' + (i + 1) + '</small><h3>' + esc(b.titulo) + '</h3><p>' + esc(b.descricao) + '</p></div></div>';
-    }).join("");
-  } else if (C.mostrarPlaceholders) {
-    bonusSec.hidden = false;
-    bonusBox.innerHTML = ['Ex: Guia de técnicas de memorização rápida', 'Ex: Mapas mentais de outra matéria'].map(function (t, i) {
-      return '<div class="bonus ph reveal"><div><small>Bônus ' + (i + 1) + '</small><h3>[' + t + ']</h3><p>Só adicione bônus que já existem e serão entregues. Preencha em <b>CONFIG.bonus</b>.</p></div></div>';
-    }).join("");
   }
 
   /* ---------- OS 100 ASSUNTOS ---------- */
