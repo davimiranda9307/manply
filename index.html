@@ -72,17 +72,25 @@ window.CONFIG = {
   mostrarPlaceholders: true,
 
   /* 📈 Meta Pixel (Facebook/Instagram Ads). Cole só o ID numérico. Dispara PageView e InitiateCheckout no clique do botão. */
-  metaPixelId: ""
+  metaPixelId: "1419245680274039"
 };
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
-<link rel="preload" as="image" href="produto-recorte-640.webp" media="(max-width: 959px)" fetchpriority="high">
-<link rel="preload" as="image" href="produto-600.webp" imagesrcset="produto-600.webp 600w, produto-1024.webp 1024w" imagesizes="440px" media="(min-width: 960px)" fetchpriority="high">
+<!-- Fontes no próprio site (sem servidor externo): 2 arquivos variáveis cobrem todos os pesos -->
+<link rel="preload" href="fonte-jakarta.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Capa: pré-carrega exatamente o arquivo que a tela vai usar (evita baixar duas versões) -->
+<link rel="preload" as="image" imagesrcset="produto-recorte-640.webp 640w, produto-recorte-984.webp 984w" imagesizes="100vw" media="(max-width: 959px)" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="produto-600.webp 600w, produto-1024.webp 1024w" imagesizes="440px" media="(min-width: 960px)" fetchpriority="high">
+<!-- Adianta a conexão com o checkout: o clique no botão abre mais rápido -->
+<link rel="preconnect" href="https://pay.kiwify.com.br" crossorigin>
 
 <style>
+/* ==========================================================================
+   FONTES (arquivos .woff2 ao lado do index.html)
+   ========================================================================== */
+@font-face{font-family:"Plus Jakarta Sans";src:url("fonte-jakarta.woff2") format("woff2");font-weight:400 800;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"JetBrains Mono";src:url("fonte-mono.woff2") format("woff2");font-weight:500 700;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
 /* ==========================================================================
    BASE
    ========================================================================== */
@@ -98,7 +106,9 @@ window.CONFIG = {
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:16px}
-body{margin:0;font-family:var(--sans);font-size:1rem;line-height:1.6;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+body{margin:0;font-family:var(--sans);font-size:1rem;line-height:1.6;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* só desenha as seções quando elas chegam perto da tela (rolagem mais leve no celular) */
+#incluso,#por-dentro,#confianca,#agora,#duvidas,footer{content-visibility:auto;contain-intrinsic-size:auto 1200px}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 button{font:inherit;color:inherit}
@@ -518,6 +528,8 @@ dialog.lb::backdrop{background:rgba(2,6,23,.8)}
 </head>
 <body>
 <script>document.documentElement.classList.add('js')</script>
+<!-- Meta Pixel (sem JavaScript): o ID vem de CONFIG.metaPixelId, no topo do arquivo -->
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1419245680274039&ev=PageView&noscript=1"></noscript>
 <script>
 /* Aviso só para pré-visualizações sem acesso aos arquivos de imagem (ex.: snapshot "data:" de editores).
    Em site publicado (https) ou aberto pelo navegador (file/http) isso nunca aparece. */
@@ -1249,9 +1261,32 @@ if (/^(data|about|blob):$/.test(location.protocol)) {
       urlFinal = u.toString();
     } catch (e) { urlFinal = checkout; }
   }
+  /* Meta Pixel — o ID fica em CONFIG.metaPixelId (topo do arquivo).
+     Os eventos (PageView, InitiateCheckout) são registrados na hora e ficam na fila;
+     o arquivo da Meta (~70 KB) só baixa depois que a página carrega ou no primeiro toque,
+     pra não disputar banda com a capa. Nada de rastreamento é perdido. */
   if (C.metaPixelId) {
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
-    window.fbq("init", String(C.metaPixelId)); window.fbq("track", "PageView");
+    (function (f, b) {
+      if (!f.fbq) {
+        var n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+        if (!f._fbq) f._fbq = n;
+        n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
+      }
+      f.fbq("init", String(C.metaPixelId));
+      f.fbq("track", "PageView");
+      var baixou = false;
+      var baixar = function () {
+        if (baixou) return; baixou = true;
+        var t = b.createElement("script"); t.async = !0; t.src = "https://connect.facebook.net/en_US/fbevents.js";
+        var s = b.getElementsByTagName("script")[0]; s.parentNode.insertBefore(t, s);
+      };
+      ["pointerdown", "touchstart", "keydown", "scroll", "mousemove"].forEach(function (ev) {
+        f.addEventListener(ev, baixar, { once: true, passive: true });
+      });
+      if (b.readyState === "complete") setTimeout(baixar, 600);
+      else f.addEventListener("load", function () { setTimeout(baixar, 600); });
+      setTimeout(baixar, 3500);
+    })(window, document);
   }
   var toastEl = $("[data-toast]"), toastT;
   var toast = function (html) { toastEl.innerHTML = html; toastEl.classList.add("show"); clearTimeout(toastT); toastT = setTimeout(function () { toastEl.classList.remove("show"); }, 4200); };
